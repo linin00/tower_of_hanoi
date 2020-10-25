@@ -1,6 +1,10 @@
 class Disk {
 public:
-    const int size;
+    int size;
+    Disk(int SIZE) {
+        size = SIZE;
+    }
+    Disk(){}
 private:
     
  };

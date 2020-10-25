@@ -5,6 +5,7 @@
 #include <conio.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h> // fix the "system" bug
 static void clrscr()
 {
     system("cls");

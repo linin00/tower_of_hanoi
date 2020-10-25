@@ -8,7 +8,10 @@ CONFIG += c++11 console
 CONFIG -= app_bundle
 
 HEADERS = \
-   $$PWD/termio.h
+   $$PWD/termio.h \
+   $$PWD/Hanoi.h \
+   $$PWD/Stack.h \
+   $$PWD/disk.h
 
 SOURCES = \
    $$PWD/hanoi.cpp
