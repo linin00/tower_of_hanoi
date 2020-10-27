@@ -77,9 +77,9 @@ class cmd : public stack<int *> {
 public:
     cmd() {
         OB = new int*[size];
-        for (int i = 0; i < size; i++) {
+        /* for (int i = 0; i < size; i++) {
             OB[i] = new int[2];
-        }
+        } */
     }
     ~cmd() {
         delete OB;
@@ -87,12 +87,13 @@ public:
     void push(int * ob) {
         if (length == size)
             doubleSize();
-        length++;
-        OB[length - 1] = new int[2];
+        length++;/* 
+        OB[length - 1] = new int[2]; */
         OB[length - 1] = ob;
     }
     int * pop() {
-        int * ob = new int[2];
+        /* int * ob = new int[2]; */
+        int * ob;
         ob = OB[length - 1];
         /* delete []OB[length - 1]; */
         length--;

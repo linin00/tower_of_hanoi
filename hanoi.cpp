@@ -25,12 +25,21 @@ public:
         while (true) {
             begin();
             move();
+            reset();
         }
     }
 private:
     Hanoi hanoi;
     int sum;
     cmd command;
+    void reset() {
+        for (int i = 0; i < 3; i++) {
+            int k = hanoi.get(i)->length;
+            for (int j = 0; j < k ; j++) {
+                hanoi.get(i)->pop();
+            }
+        }
+    }
     void getbegin() {
         int cmd;
         char *CMD;
@@ -38,6 +47,7 @@ private:
         CMD = new char;
         while (true) {
             Termio::Clear();
+            Termio::ResetBuffer();
             cout << "How many disks do you want? (1 ~ 5)\n";
             cin >> CMD;
             stringstream ss1(CMD);
@@ -54,7 +64,7 @@ private:
         }
     }
     bool judge() {
-        if (hanoi.get(0)->length == 0 && hanoi.get(2)->length == 0 && hanoi.get(1)->length == sum) {
+        if (hanoi.get(0)->length == 0 && hanoi.get(2)->length == 0) {
             cout << "Congratulations! You win!\n";
             cin.get();
             return true;
@@ -67,7 +77,6 @@ private:
             hanoi.get(0)->push(Disk(i));
         }
         hanoi.upset();
-
         hanoi.firstPrint();
         hanoi.print();
         //cout << hanoi.get(0)->length << hanoi.get(1)->length << hanoi.get(2)->length; 

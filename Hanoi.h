@@ -5,9 +5,8 @@ public:
     Hanoi() {
         for (int i = 0; i < 3; i++) {
         hanoi[i] = new rod(i);
+        }
     }
-    }
-
     rod* get(int i) {
         /* cout << "testing\n"; */
         return hanoi[i];
