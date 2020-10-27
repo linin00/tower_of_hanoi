@@ -1,6 +1,6 @@
 class Disk {
 public:
-    int size;
+    int size = 0;
     Disk(int SIZE) {
         size = SIZE;
     }
