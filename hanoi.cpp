@@ -99,10 +99,11 @@ private:
             int rod2 = c[0];
             Disk disk = hanoi.get(rod1 - 1)->pop();
             hanoi.get(rod2 - 1)->push(disk);
-            cin.get();
             hanoi.print();
-            cout << "Auto moving:" << rod1 << "->" << rod2 << " " << command.length << endl;
+            cout << "Auto moving:" << rod1 << "->" << rod2 << endl;
+            cin.get();
         }
+        hanoi.print();
     }
 };
 int main() {
