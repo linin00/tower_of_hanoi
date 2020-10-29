@@ -70,7 +70,9 @@ public:
     }
     void resetstack(){
         delete []OB;
-        OB = new int*[size];  
+        size = 0;
+        length = 0;
+        OB = new int*[size];
     }
     void push(int * ob) {
         if (length == size)
