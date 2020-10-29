@@ -8,14 +8,12 @@ public:
         }
     }
     rod* get(int i) {
-        /* cout << "testing\n"; */
         return hanoi[i];
     }
     void upset() {
         if (hanoi[0]->length) {
             for (int i = 0; i < hanoi[0]->length; i++) {
                 hanoi[0]->get(i).size = hanoi[0]->length - i;
-               /*  cout << hanoi[1]->get(i).size; */
             }
         }
     }

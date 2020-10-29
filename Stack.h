@@ -8,19 +8,13 @@ public:
         length++;
         OB[length - 1] = ob;
     }
-    T pop() {/* 
-        if (length == 0) 
-         return nullptr; */
+    T pop() {
         T ob = OB[length - 1];
-        /* delete OB[length - 1]; */
         length--;
         return ob;
     }
-    T getTop() {/*  
-        if (length == 0) 
-            exit(0);  */
+    T getTop() {
         T ob = OB[length - 1];
-        /* cout << 456; */
         return ob;
     }
     int size = 0;
@@ -29,21 +23,18 @@ public:
 protected:
     T *OB;
     void doubleSize() {
-        //Sleep(3000);
         if (size == 0) size++;
-
         T *ob;
         ob = new T[2*size];
         for (int i = 0; i < size; i++) {
             ob[i] = OB[i];
         }
         delete []OB;
-        //OB = ob;///////
         OB = new T[2*size];
         for (int i = 0; i <size; i++) {
             OB[i] = ob[i];
         }
-        //size*=2;
+        size *= 2;
         delete []ob;
     }
 private:
@@ -55,10 +46,7 @@ public:
     Disk &get(int i) {
         return OB[i];
     }
-    rod() {
-        /* OB = new Disk[5];
-        size = 5; */
-    };
+    rod() {}
     rod(int a) {
         order = a;
         OB = new Disk[5];
@@ -68,7 +56,6 @@ public:
         delete OB;
     }
     int getTopSize() {
-        /* cout << 123; */
         if (length == 0)
             return INT_MAX;
         return getTop().size;
@@ -80,47 +67,22 @@ class cmd : public stack<int *> {
 public:
     cmd() {
         OB = new int*[size];
-        /* for (int i = 0; i < size; i++) {
-            OB[i] = new int[2];
-        } */
-    }
-    ~cmd() {
-       
     }
     void resetstack(){
         delete []OB;
-        OB = new int*[size];
-       
+        OB = new int*[size];  
     }
     void push(int * ob) {
         if (length == size)
             doubleSize();
-        length++;/* 
-        OB[length - 1] = new int[2]; */
+        length++;
         OB[length - 1] = ob;
     }
     int * pop() {
-        /* int * ob = new int[2]; */
         int * ob;
         ob = OB[length - 1];
-        /* delete []OB[length - 1]; */
         length--;
         return ob;
     }
 private:
-    /* void doubleSize() {
-        if (size == 0)
-        size++;
-        int **ob;
-        ob = new T[2*size];
-        for (int i = 0; i < size; i++) {
-            ob[i] = OB[i];
-        }
-        delete OB;
-        OB = new T[2*size];
-        for (int i = 0; i <size; i++) {
-            OB[i] = ob[i];
-        }
-        delete ob; 
-    } */
 };
