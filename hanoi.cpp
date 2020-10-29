@@ -15,7 +15,7 @@ public:
     }
 private:
     Hanoi hanoi;
-    int sum;
+    int sum = 0;
     cmd command;
     void reset() {
         for (int i = 0; i < 3; i++) {
@@ -32,10 +32,10 @@ private:
         char q;
         CMD = new char;
         while (true) {
-            Termio::Clear();
-            Termio::ResetBuffer();
             cout << "How many disks do you want? (1 ~ 5)\n";
+            Termio::ResetBuffer();
             cin >> CMD;
+            Termio::Clear();
             stringstream ss1(CMD);
             ss1 >> q;
             if (q == 'Q') exit(0);
@@ -50,7 +50,6 @@ private:
     bool judge() {
         if (hanoi.get(0)->length == 0 && hanoi.get(2)->length == 0) {
             cout << "Congratulations! You win!\n";
-            cin.get();
             return true;
         }
         else return false;
@@ -76,7 +75,7 @@ private:
             cmd1 = new char;
             stringstream ss(cmd);
             ss >> rod1 >> rod2;
-            if (rod2 == rod1 && rod2 == 0) autoMove();
+            if (rod2 == rod1 && rod2 == 0) autosolve();
             else if (rod1 > 3 || rod1 < 1 || rod2 >3 || rod2 < 1) continue;
                 else if (hanoi.get(rod1 - 1)->getTopSize() > hanoi.get(rod2 - 1)->getTopSize()) continue; 
                     else {
@@ -99,11 +98,24 @@ private:
             int rod2 = c[0];
             Disk disk = hanoi.get(rod1 - 1)->pop();
             hanoi.get(rod2 - 1)->push(disk);
-            hanoi.print();
             cout << "Auto moving:" << rod1 << "->" << rod2 << endl;
-            cin.get();
+            hanoi.autoMove_print();
         }
-        hanoi.print();
+    }
+    void recursion(int n, int rod1, int rod2, int rod3) {
+        if(n > 1) recursion(n - 1, rod1, rod3, rod2);
+
+        Disk disk = hanoi.get(rod1 - 1)->pop();
+        hanoi.get(rod2 - 1)->push(disk);
+        cout << "Auto moving:" << rod1 << "->" << rod2 << endl;
+        hanoi.autoMove_print();
+
+        if(n > 1) recursion(n - 1, rod3, rod2, rod1);
+    }
+    void autosolve () {
+        Termio::Clear();
+        autoMove();
+        recursion(sum, 1, 2, 3);
     }
 };
 int main() {
