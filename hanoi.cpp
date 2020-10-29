@@ -39,7 +39,10 @@ private:
                 hanoi.get(i)->pop();
             }
         }
-    }
+        command.resetstack();
+        command.~cmd();
+        command = cmd();
+    }// pop
     void getbegin() {
         int cmd;
         char *CMD;
@@ -98,11 +101,11 @@ private:
             if (rod2 == rod1 && rod2 == 0)
                 autoMove();
             /* Sleep(3000); */
-            if (rod1 > 3 || rod1 < 1 || rod2 >3 || rod2 < 1) {
+           else if (rod1 > 3 || rod1 < 1 || rod2 >3 || rod2 < 1) {
                 /* cout << 123; */
                 continue;
                 }
-            if (hanoi.get(rod1 - 1)->getTopSize() > hanoi.get(rod2 - 1)->getTopSize()) {
+           else if (hanoi.get(rod1 - 1)->getTopSize() > hanoi.get(rod2 - 1)->getTopSize()) {
                 /* cout << 123; */
                 continue;
             }  
@@ -140,12 +143,12 @@ private:
             hanoi.get(c[0] - 1)->push(disk); */
             int rod1 = c[1];
             int rod2 = c[0];
-            delete []c;
+            //delete []c;
             Disk disk = hanoi.get(rod1 - 1)->pop();
             hanoi.get(rod2 - 1)->push(disk);
             cin.get();
             hanoi.print();
-            cout << "Auto moving:" << rod1 << "->" << rod2 << endl;
+            cout << "Auto moving:" << rod1 << "->" << rod2 << " " << command.length << endl;
         }
     }
 };

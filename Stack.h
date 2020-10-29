@@ -29,19 +29,22 @@ public:
 protected:
     T *OB;
     void doubleSize() {
-        if (size == 0)
-        size++;
+        //Sleep(3000);
+        if (size == 0) size++;
+
         T *ob;
         ob = new T[2*size];
         for (int i = 0; i < size; i++) {
             ob[i] = OB[i];
         }
-        delete OB;
+        delete []OB;
+        //OB = ob;///////
         OB = new T[2*size];
         for (int i = 0; i <size; i++) {
             OB[i] = ob[i];
         }
-        delete ob;
+        //size*=2;
+        delete []ob;
     }
 private:
 };
@@ -82,7 +85,12 @@ public:
         } */
     }
     ~cmd() {
-        delete OB;
+       
+    }
+    void resetstack(){
+        delete []OB;
+        OB = new int*[size];
+       
     }
     void push(int * ob) {
         if (length == size)
