@@ -21,3 +21,6 @@ void resetstack(){
 原因分析：
 > 在弹出command时由于第一次游戏的指令记录次数没有归零,导致第二次游戏时
 弹出command下标越界
+
+#### todo
+完成automove函数
