@@ -24,3 +24,6 @@ void resetstack(){
 
 #### todo
 完成automove函数
+
+#### done
+完善了代码风格

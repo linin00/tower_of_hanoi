@@ -20,16 +20,15 @@ public:
     void print();
     void firstPrint() {
         Termio::Clear();
-    Termio::ResetBuffer();
-    for (int i = 1; i < 40; i++) {
-        Termio::buffer[10][i] = '-';
-    }
-    for (int i = 0; i < 11; i++) {
-        Termio::buffer[i][5] = '|';
-        Termio::buffer[i][20] = '|';
-        Termio::buffer[i][35] = '|';
-    }
-    
+        Termio::ResetBuffer();
+        for (int i = 1; i < 40; i++) {
+            Termio::buffer[10][i] = '-';
+        }
+        for (int i = 0; i < 11; i++) {
+            Termio::buffer[i][5] = '|';
+            Termio::buffer[i][20] = '|';
+            Termio::buffer[i][35] = '|';
+        }
     }
 private:
     rod *hanoi[3];

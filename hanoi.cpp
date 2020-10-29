@@ -38,9 +38,7 @@ private:
             cin >> CMD;
             stringstream ss1(CMD);
             ss1 >> q;
-            if (q == 'Q') {
-                exit(0);
-            }
+            if (q == 'Q') exit(0);
             stringstream ss2(CMD);
             ss2 >> cmd;
             if(cmd >= 1 && cmd <= 5) {  
@@ -78,26 +76,20 @@ private:
             cmd1 = new char;
             stringstream ss(cmd);
             ss >> rod1 >> rod2;
-            if (rod2 == rod1 && rod2 == 0)
-                autoMove();
-           else if (rod1 > 3 || rod1 < 1 || rod2 >3 || rod2 < 1) {
-                continue;
-                }
-           else if (hanoi.get(rod1 - 1)->getTopSize() > hanoi.get(rod2 - 1)->getTopSize()) {
-                continue;
-            }  
-            else {
-                Disk disk = hanoi.get(rod1 - 1)->pop();
-                hanoi.get(rod2 - 1)->push(disk);
-                int *c;
-                c = new int[2];
-                c[0] = rod1;
-                c[1] = rod2;
-                command.push(c);
-                 hanoi.print(); 
-                }
-            if (judge())
-                break;
+            if (rod2 == rod1 && rod2 == 0) autoMove();
+            else if (rod1 > 3 || rod1 < 1 || rod2 >3 || rod2 < 1) continue;
+                else if (hanoi.get(rod1 - 1)->getTopSize() > hanoi.get(rod2 - 1)->getTopSize()) continue; 
+                    else {
+                        Disk disk = hanoi.get(rod1 - 1)->pop();
+                        hanoi.get(rod2 - 1)->push(disk);
+                        int *c;
+                        c = new int[2];
+                        c[0] = rod1;
+                        c[1] = rod2;
+                        command.push(c);
+                        hanoi.print(); 
+                        }
+            if (judge()) break;
         }
     }
     void autoMove() {

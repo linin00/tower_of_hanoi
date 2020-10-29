@@ -75,8 +75,7 @@ public:
         OB = new int*[size];
     }
     void push(int * ob) {
-        if (length == size)
-            doubleSize();
+        if (length == size) doubleSize();
         length++;
         OB[length - 1] = ob;
     }
