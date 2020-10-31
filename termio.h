@@ -1,7 +1,6 @@
+#include <stdlib.h> 
 #pragma once
 /* some code from Libconio 1.0 (C) 2004 FSL A.C. */
-
-#include <stdlib.h> 
 #ifdef _WIN32
 #include <conio.h>
 #include <stdio.h>
