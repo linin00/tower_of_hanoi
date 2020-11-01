@@ -14,14 +14,14 @@ public:
         }
     }
 private:
-    Hanoi hanoi;
+    Hanoi my_hanoi;
     int sum = 0;
     cmd command;
     void reset() {
         for (int i = 0; i < 3; i++) {
-            int k = hanoi.get(i)->length;
+            int k = my_hanoi.get(i)->length;
             for (int j = 0; j < k ; j++) {
-                hanoi.get(i)->pop();
+                my_hanoi.get(i)->pop();
             }
         }
         command.resetstack();
@@ -48,7 +48,7 @@ private:
         }
     }
     bool judge() {
-        if (hanoi.get(0)->length == 0 && hanoi.get(2)->length == 0) {
+        if (my_hanoi.get(0)->length == 0 && my_hanoi.get(2)->length == 0) {
             cout << "Congratulations! You win!\n";
             return true;
         }
@@ -57,11 +57,11 @@ private:
     void begin() {
         getbegin();
         for (int i = sum; i >= 1 ; i--) {
-            hanoi.get(0)->push(Disk(i));
+            my_hanoi.get(0)->push(Disk(i));
         }
-        hanoi.upset();
-        hanoi.firstPrint();
-        hanoi.print();
+        my_hanoi.upset();
+        my_hanoi.firstPrint();
+        my_hanoi.print();
     }
     void move() {
         char *cmd;
@@ -70,23 +70,23 @@ private:
         while (true) {
             cout << "Move a disk. Format: x y\n";
             cin.getline(cmd, INT_MAX);
-            hanoi.print();
+            my_hanoi.print();
             char *cmd1;
             cmd1 = new char;
             stringstream ss(cmd);
             ss >> rod1 >> rod2;
             if (rod2 == rod1 && rod2 == 0) autosolve();
             else if (rod1 > 3 || rod1 < 1 || rod2 >3 || rod2 < 1) continue;
-                else if (hanoi.get(rod1 - 1)->getTopSize() > hanoi.get(rod2 - 1)->getTopSize()) continue; 
+                else if (my_hanoi.get(rod1 - 1)->getTopSize() > my_hanoi.get(rod2 - 1)->getTopSize()) continue; 
                     else {
-                        Disk disk = hanoi.get(rod1 - 1)->pop();
-                        hanoi.get(rod2 - 1)->push(disk);
+                        Disk disk = my_hanoi.get(rod1 - 1)->pop();
+                        my_hanoi.get(rod2 - 1)->push(disk);
                         int *c;
                         c = new int[2];
                         c[0] = rod1;
                         c[1] = rod2;
                         command.push(c);
-                        hanoi.print(); 
+                        my_hanoi.print(); 
                         }
             if (judge()) break;
         }
@@ -96,19 +96,19 @@ private:
             int *c = command.pop();
             int rod1 = c[1];
             int rod2 = c[0];
-            Disk disk = hanoi.get(rod1 - 1)->pop();
-            hanoi.get(rod2 - 1)->push(disk);
+            Disk disk = my_hanoi.get(rod1 - 1)->pop();
+            my_hanoi.get(rod2 - 1)->push(disk);
             cout << "Auto moving:" << rod1 << "->" << rod2 << endl;
-            hanoi.autoMove_print();
+            my_hanoi.autoMove_print();
         }
     }
     void recursion(int n, int rod1, int rod2, int rod3) {
         if(n > 1) recursion(n - 1, rod1, rod3, rod2);
 
-        Disk disk = hanoi.get(rod1 - 1)->pop();
-        hanoi.get(rod2 - 1)->push(disk);
+        Disk disk = my_hanoi.get(rod1 - 1)->pop();
+        my_hanoi.get(rod2 - 1)->push(disk);
         cout << "Auto moving:" << rod1 << "->" << rod2 << endl;
-        hanoi.autoMove_print();
+        my_hanoi.autoMove_print();
 
         if(n > 1) recursion(n - 1, rod3, rod2, rod1);
     }
