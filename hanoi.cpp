@@ -2,6 +2,7 @@
 #include "Hanoi.h"
 #include <sstream>
 #include <stdlib.h> 
+#include <climits>
 char Termio::buffer[Termio::CANVAS_HEIGHT][Termio::CANVAS_WIDTH + 1];
 
 class game {

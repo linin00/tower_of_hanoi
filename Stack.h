@@ -1,4 +1,5 @@
 #include "disk.h"
+#include <climits>
 template <class T>
 class stack {
 public:
