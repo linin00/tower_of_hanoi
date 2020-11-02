@@ -1,7 +1,7 @@
 #include "termio.h"
 #include "Hanoi.h"
 #include <sstream>
-#include <climits>
+#include <stdlib.h> 
 char Termio::buffer[Termio::CANVAS_HEIGHT][Termio::CANVAS_WIDTH + 1];
 
 class game {
